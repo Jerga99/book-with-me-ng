@@ -1,12 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { JsonApiModule } from 'angular2-jsonapi';
+import { Routes, RouterModule } from '@angular/router';
 
+import { Datastore } from './shared/datastore';
+import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header.component';
+import { RentalComponent } from './rental/rental.component';
 
-import { AppRoutingModule } from './/app-routing.module';
-
+ const routes: Routes = [
+   { path: '', redirectTo: '/rentals', pathMatch: 'full' },
+   { path: 'rentals', component: RentalComponent }
+ ];
 
 @NgModule({
   declarations: [
@@ -15,9 +22,14 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes),
+    JsonApiModule,
+    RentalModule
   ],
-  providers: [],
+  providers: [
+    Datastore
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
