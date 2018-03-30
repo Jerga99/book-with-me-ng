@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { JsonApiModule } from 'angular2-jsonapi';
 import { Routes, RouterModule } from '@angular/router';
 
+import { Datastore } from './shared/datastore';
 import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,9 @@ import { RentalComponent } from './rental/rental.component';
     JsonApiModule,
     RentalModule
   ],
-  providers: [],
+  providers: [
+    Datastore
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
