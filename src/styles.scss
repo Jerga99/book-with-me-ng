@@ -1,0 +1,19 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import 'variables';
+
+html, body, p {
+  color: $main-text-color-gray;
+}
+
+.btn-bwm {
+  background-color: $main-color;
+  border-color: $main-color;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+
+  &:hover, &:focus, &:active {
+    border-color: $main-color !important;
+    background-color: $main-color !important;
+  }
+}
