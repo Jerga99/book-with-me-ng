@@ -1,7 +1,7 @@
 <section id="rentalListing">
   <h1 class="title">Your Home All Around the World</h1>
   <div class="row">
-    <div class='col-md-3 col-xs-6'>
+    <div *ngFor="let rental of rentals" class='col-md-3 col-sm-6'>
       <div class="card bwm-card">
         <img class="card-img-top" src="{{rental.image}}" alt="">
         <div class="card-block">

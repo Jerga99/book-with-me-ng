@@ -1,10 +1,12 @@
 import { JsonApiDatastoreConfig, JsonApiDatastore, DatastoreConfig } from 'angular2-jsonapi';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Rental } from '../rental/shared/rental.model';
 
 const config: DatastoreConfig = {
-  baseUrl: 'http://localhost:4200/api/v1/',
+  baseUrl: '/api/v1',
   models: {
+    rentals: Rental
   }
 }
 
