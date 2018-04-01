@@ -1,7 +1,7 @@
 import { JsonApiModelConfig, JsonApiModel, Attribute, HasMany } from 'angular2-jsonapi';
 
 @JsonApiModelConfig({
-  type: 'brands'
+  type: 'rentals'
 })
 export class Rental extends JsonApiModel {
 
