@@ -17,4 +17,8 @@ export class RentalService {
   public getRentals(): Observable<JsonApiModel[]> {
     return this.datastore.query(Rental);
   }
+
+  public getRentalById(id: string): Observable<Rental> {
+    return this.datastore.findRecord(Rental, id);
+  }
 }

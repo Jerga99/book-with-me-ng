@@ -1,27 +1,22 @@
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const express       = require("express"),
+      app           = express(),
+      bodyParser    = require("body-parser");
+      // mongoose        = require("mongoose"),
+      // Rental          = require("./models/rental"),
 
-server.use('/api/v1', router);
-server.use(middlewares);
+const rentalsRoutes = require("./routes/rentals");
+      // authRoutes    = require("./routes/auth"),
 
-// Add custom routes before JSON Server router
-server.get('/echo', (req, res) => {
-  res.jsonp(req.query)
-})
+// var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+// mongoose.connect(url);
 
-// To handle POST, PUT and PATCH you need to use a body-parser
-// You can use the one used by JSON Server
-server.use(jsonServer.bodyParser)
-server.use((req, res, next) => {
-  if (req.method === 'POST') {
-    req.body.createdAt = Date.now()
-  }
-  // Continue to JSON Server router
-  next()
-})
+app.use(bodyParser.json()); // use od body parser to get values from get req
 
-server.listen(3000, () => {
-  console.log('JSON Server is running')
-})
+// app.use("api/v1/", authRoutes);
+app.use("/api/v1/rentals", rentalsRoutes);
+
+const PORT = process.env.PORT || '3000';
+
+app.listen(PORT, function(){
+    console.log("Node server started on port " + PORT);
+});
