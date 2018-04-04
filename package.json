@@ -28,10 +28,14 @@
     "core-js": "^2.4.1",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
+    "ng2-daterangepicker": "^2.0.12",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.2.12",
     "@angular/cli": "~1.7.3",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
