@@ -9,4 +9,10 @@ router.get("/", function(req, res) {
   });
 });
 
+router.get("/:id", function(req, res) {
+  Rental.findById(req.params.id, function(err, foundRental){
+    res.json(foundRental);
+  });
+});
+
 module.exports = router;
