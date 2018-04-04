@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { JsonApiModel } from 'angular2-jsonapi';
 import { Rental } from './rental.model';
 import { HttpClient } from '@angular/common/http';
 

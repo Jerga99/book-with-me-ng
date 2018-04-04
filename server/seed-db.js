@@ -26,7 +26,7 @@ module.exports = (function() {
       "title": "Grand Old Mansion-3",
       "city": "San Francisco",
       "street": "Some fake street",
-      "category": "estate",
+      "category": "house",
       "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
       "bedrooms": 5,
       "description": "Very nice apartment in center of the city.",
@@ -37,7 +37,7 @@ module.exports = (function() {
   function FakeDB() {};
 
   FakeDB.prototype.seed = function() {
-    Rental.remove([]).then(() => {
+    Rental.remove({}).then(() => {
       data['rentals'].forEach(rental => {
         const newRental = new Rental(rental);
         newRental.save();

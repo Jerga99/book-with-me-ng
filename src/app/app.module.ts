@@ -8,8 +8,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header.component';
+import { HeaderComponent } from './shared/component/header/header.component';
 import { RentalComponent } from './rental/rental.component';
+
+import { HelperService } from './shared/service/helper.service';
 
  const routes: Routes = [
    { path: '', redirectTo: '/rentals', pathMatch: 'full' },
@@ -29,7 +31,7 @@ import { RentalComponent } from './rental/rental.component';
     HttpClientModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [HelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

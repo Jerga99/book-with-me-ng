@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RentalService } from '../shared/rental.service';
+import { HelperService } from '../../shared/service/helper.service';
 
 import { Rental } from '../shared/rental.model';
-import { JsonApiQueryData } from 'angular2-jsonapi';
 
 @Component({
   selector: 'bwm-rental-list',
@@ -12,7 +12,8 @@ import { JsonApiQueryData } from 'angular2-jsonapi';
 export class RentalListComponent implements OnInit {
   public rentals: Rental[];
 
-  constructor(public rentalService: RentalService) {}
+  constructor(public rentalService: RentalService,
+              public helper: HelperService) {}
 
   ngOnInit() {
     this.rentalService.getRentals().subscribe((rentals: Rental[]) => {
