@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Datastore } from '../../shared/datastore';
 import { RentalService } from '../shared/rental.service';
 
 import { Rental } from '../shared/rental.model';
