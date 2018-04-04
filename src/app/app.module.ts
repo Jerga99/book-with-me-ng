@@ -2,9 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { JsonApiModule } from 'angular2-jsonapi';
 import { Routes, RouterModule } from '@angular/router';
-
-import { Datastore } from './shared/datastore';
 import { RentalModule } from './rental/rental.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header.component';
@@ -24,11 +23,10 @@ import { RentalComponent } from './rental/rental.component';
     BrowserModule,
     RouterModule.forRoot(routes),
     JsonApiModule,
-    RentalModule
+    RentalModule,
+    HttpClientModule
   ],
-  providers: [
-    Datastore
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

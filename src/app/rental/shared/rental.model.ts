@@ -1,37 +1,12 @@
-import { JsonApiModelConfig, JsonApiModel, Attribute, HasMany } from 'angular2-jsonapi';
-
-@JsonApiModelConfig({
-  type: 'rentals'
-})
-export class Rental extends JsonApiModel {
-
-  @Attribute()
-  id: string;
-
-  @Attribute()
+export interface Rental {
+  _id: string;
   title: string;
-
-  @Attribute()
   city: string;
-
-  @Attribute()
   street: string;
-
-  @Attribute()
   category: string;
-
-  @Attribute()
   image: string;
-
-  @Attribute()
   bedrooms: number;
-
-  @Attribute()
   description: string;
-
-  @Attribute()
-  daily_rate: number;
-
-  @Attribute()
-  created_at: string;
+  dailyRate: number;
+  createdAt: string;
 }
