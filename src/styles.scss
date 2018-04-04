@@ -5,6 +5,18 @@ html, body, p {
   color: $main-text-color-gray;
 }
 
+.apartment {
+  color: #a72da3;
+}
+
+.condo {
+  color: #d68000;
+}
+
+.house {
+  color: #bf1818;
+}
+
 .btn-bwm {
   background-color: $main-color;
   border-color: $main-color;
@@ -15,42 +27,5 @@ html, body, p {
   &:hover, &:focus, &:active {
     border-color: $main-color !important;
     background-color: $main-color !important;
-  }
-}
-
-#rentalListing {
-  .title {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  /* SINGLE CARD STYLES*/
-  .bwm-card {
-    border: none;
-
-    .card-block {
-      padding-top: 8px;
-
-      .card-subtitle {
-        margin: 0;
-        font-weight: 500;
-        font-size: 12px;
-        text-transform: uppercase;
-        color: #16861a;
-      }
-
-      .card-title {
-        font-size: 19px;
-        margin: 3px 0;
-      }
-
-      .card-text {
-        font-size: 14px;
-        font-weight: 300;
-        color: #7e7e7e;
-        margin-bottom: 0;
-      }
-    }
   }
 }
