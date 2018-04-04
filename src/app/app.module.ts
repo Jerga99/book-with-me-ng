@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { JsonApiModule } from 'angular2-jsonapi';
 import { Routes, RouterModule } from '@angular/router';
-import { RentalModule } from './rental/rental.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header.component';
@@ -24,7 +26,8 @@ import { RentalComponent } from './rental/rental.component';
     RouterModule.forRoot(routes),
     JsonApiModule,
     RentalModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
