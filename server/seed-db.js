@@ -1,4 +1,5 @@
 const Rental = require("./models/rental");
+const User = require("./models/user");
 
 module.exports = (function() {
   const data = {
@@ -31,17 +32,22 @@ module.exports = (function() {
       "bedrooms": 5,
       "description": "Very nice apartment in center of the city.",
       "dailyRate": 23
-    }]
+    }],
+    "user": {username: "Filip99", email: "test@gmail.com", password: "testtest"}
   }
 
   function FakeDB() {};
 
-  FakeDB.prototype.seed = function() {
-    Rental.remove({}).then(() => {
-      data['rentals'].forEach(rental => {
-        const newRental = new Rental(rental);
-        newRental.save();
-      });
+  FakeDB.prototype.seed = async function() {
+    await User.remove({});
+    await Rental.remove({});
+    const user = new User(data['user']);
+    await user.save();
+
+    data['rentals'].forEach(rental => {
+      const newRental = new Rental(rental);
+      newRental.user = user;
+      newRental.save();
     });
   }
 
