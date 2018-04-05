@@ -9,18 +9,24 @@ import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/component/header/header.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 import { RentalComponent } from './rental/rental.component';
 
  const routes: Routes = [
    { path: '', redirectTo: '/rentals', pathMatch: 'full' },
-   { path: 'rentals', component: RentalComponent }
+   { path: 'rentals', component: RentalComponent },
+   { path: 'login', component: LoginComponent },
+   { path: 'register', component: RegisterComponent }
  ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
