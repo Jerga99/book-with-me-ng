@@ -1,17 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { JsonApiModule } from 'angular2-jsonapi';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { SharedModule } from './shared/shared.module';
 import { RentalModule } from './rental/rental.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/component/header/header.component';
-import { RentalComponent } from './rental/rental.component';
 
-import { HelperService } from './shared/service/helper.service';
+import { RentalComponent } from './rental/rental.component';
 
  const routes: Routes = [
    { path: '', redirectTo: '/rentals', pathMatch: 'full' },
@@ -26,12 +25,12 @@ import { HelperService } from './shared/service/helper.service';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    JsonApiModule,
     RentalModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    SharedModule
   ],
-  providers: [HelperService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
