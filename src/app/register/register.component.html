@@ -3,30 +3,37 @@
     <div class="row">
       <div class="col-md-5">
         <h1>Register</h1>
-        <form>
+        <form #registerForm="ngForm">
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" required>
+            <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" required #username="ngModel">
+              <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched) && username.errors.required">
+                Name is required.
+              </div>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" required>
+            <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="email">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password required">
+            <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="password">
           </div>
 
           <div class="form-group">
-            <label for="confirmationPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmationPassword" required>
+            <label for="passwordConfirmation">Confirm Password</label>
+            <input [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" type="password" class="form-control" id="passwordConfirmation">
           </div>
-
-          <button type="submit" class="btn btn-bwm">Submit</button>
+          <button [disabled]="!registerForm.form.valid" (click)="register()" type="submit" class="btn btn-bwm">Submit</button>
 
         </form>
+        <div *ngIf="errors.length > 0" class="alert alert-danger">
+          <p *ngFor="let error of errors">
+            {{error.detail}}
+          </p>
+        </div>
       </div>
       <div class="col-md-6 ml-auto">
         <div class="image-container">
