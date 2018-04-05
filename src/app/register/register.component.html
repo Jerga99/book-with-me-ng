@@ -7,9 +7,9 @@
           <div class="form-group">
             <label for="username">Username</label>
             <input [(ngModel)]="user.username" name="username" type="text" class="form-control" id="username" required #username="ngModel">
-              <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched) && username.errors.required">
-                Name is required.
-              </div>
+            <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched) && username.errors.required">
+              Name is required.
+            </div>
           </div>
 
           <div class="form-group">
