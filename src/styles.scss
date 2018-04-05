@@ -33,6 +33,16 @@ html, body, p {
 .bwm-form {
   color: $main-text-color-gray;
 
+  form {
+    margin-bottom: 10px;
+  }
+
+  .alert {
+    p {
+      margin: 0;
+    }
+  }
+
   h1 {
     font-weight: 700;
     margin-bottom: 30px;
