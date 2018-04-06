@@ -11,14 +11,13 @@ export interface LoginData {
 
 @Injectable()
 export class UserService {
-  private cachedUsername: string;
-  private cachedToken: string;
+  private username: string;
+  private token: string;
 
   constructor(private http: HttpClient) {}
 
   private saveToken(token) {
     localStorage.setItem('bwm_auth', JSON.stringify(token));
-
     return token;
   }
 
@@ -34,10 +33,10 @@ export class UserService {
   }
 
   private getToken(): string {
-    if (this.cachedToken) return this.cachedToken;
+    if (this.token) return this.token;
 
     if (this.isAuthenticated()) {
-      return this.cachedToken = JSON.parse(localStorage.getItem('bwm_auth')).token;
+      return this.token = JSON.parse(localStorage.getItem('bwm_auth')).token;
     }
 
     return '';
@@ -59,6 +58,8 @@ export class UserService {
 
   public logout(): Observable<any> {
     localStorage.removeItem('bwm_auth');
+    this.token = '';
+    this.username = '';
 
     return new Observable(observer => {
       if (!!localStorage.getItem('bwm_auth')) {
@@ -70,9 +71,9 @@ export class UserService {
   }
 
   public getUsername(): string {
-    if (this.cachedUsername) return this.cachedUsername;
+    if (this.username) return this.username;
 
-    return this.cachedUsername = this.parseJwt(this.getToken()).username;
+    return this.username = this.parseJwt(this.getToken()).username;
   }
 
   public getAuthToken(): any {
