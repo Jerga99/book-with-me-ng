@@ -11,11 +11,37 @@ export interface LoginData {
 
 @Injectable()
 export class UserService {
-  private isLoggedIn: boolean;
+  private username: string;
+  private token: string;
 
-  constructor(private http: HttpClient) {
-    this.isLoggedIn = !!localStorage.getItem('bwm_auth');
+  constructor(private http: HttpClient) {}
+
+  private saveToken(token) {
+    localStorage.setItem('bwm_auth', JSON.stringify(token));
+    return token;
   }
+
+  private parseJwt (token) {
+    if (token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+
+      return JSON.parse(window.atob(base64));
+    }
+
+    return {};
+  }
+
+  private getToken(): string {
+    if (this.token) return this.token;
+
+    if (this.isAuthenticated()) {
+      return this.token = JSON.parse(localStorage.getItem('bwm_auth')).token;
+    }
+
+    return '';
+  }
+
 
   public register(user: User): Observable<any> {
     return this.http.post('/api/v1/users', user);
@@ -25,15 +51,34 @@ export class UserService {
     return this.http.post('/api/v1/auth', loginData).map(token => this.saveToken(token));
   }
 
-  private saveToken(token) {
-    localStorage.setItem('bwm_auth', JSON.stringify(token));
-
-    return token;
+  public isAuthenticated(): boolean {
+    // Check if token is not expired
+    return !!localStorage.getItem('bwm_auth');
   }
 
- isAuthenticated(): boolean {
-    // Check if token is not expired
-    debugger;
-    return this.isLoggedIn;
+  public logout(): Observable<any> {
+    localStorage.removeItem('bwm_auth');
+    this.token = '';
+    this.username = '';
+
+    return new Observable(observer => {
+      if (!!localStorage.getItem('bwm_auth')) {
+        observer.error(new Error("Token not removed"));
+      } else {
+        observer.next();
+      }
+    });
+  }
+
+  public getUsername(): string {
+    if (this.username) return this.username;
+
+    return this.username = this.parseJwt(this.getToken()).username;
+  }
+
+  public getAuthToken(): any {
+    const auth = localStorage.getItem('bwm_auth');
+
+    return auth ? `Bearer ${JSON.parse(auth).token}` : '';
   }
 }

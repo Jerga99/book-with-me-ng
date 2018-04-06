@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.userService.register(this.user).subscribe(
       (data) => {
-        this.router.navigate(['/login', {registered: true}]);
+        this.router.navigate(['/login', {M: "REGISTERED"}]);
       },
       (invalidResponse: any) => {
         this.errors = invalidResponse.error.errors;

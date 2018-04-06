@@ -14,11 +14,15 @@ import { RegisterComponent } from './register/register.component';
 
 import { RentalComponent } from './rental/rental.component';
 
+import { AuthGuard } from './shared/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/interceptor/token.interceptor';
+
  const routes: Routes = [
    { path: '', redirectTo: '/rentals', pathMatch: 'full' },
    { path: 'rentals', component: RentalComponent },
-   { path: 'login', component: LoginComponent },
-   { path: 'register', component: RegisterComponent }
+   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard]}
  ];
 
 @NgModule({
@@ -36,7 +40,14 @@ import { RentalComponent } from './rental/rental.component';
     AngularFontAwesomeModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+  AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,8 +18,8 @@ mongoose.connect(url).then(() => {
 
 app.use(bodyParser.json()); // use od body parser to get values from get req
 
-app.use("/api/v1", authRoutes);
 app.use("/api/v1/rentals", rentalsRoutes);
+app.use("/api/v1", authRoutes);
 
 const PORT = process.env.PORT || '3000';
 

@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Rental = require("../models/rental");
+const Auth = require("../controllers/auth");
 
+
+// TEST WITH AUTH MIDDLEWARE
 router.get("/", function(req, res) {
   Rental.find({}, function(err, allRentals) {
     res.json(allRentals);

@@ -67,7 +67,7 @@ exports.authMiddleware = function(req, res, next) {
   const token = req.headers.authorization || '';
 
   if (token) {
-    const user = jwt.decode(token, keys.SECRET);
+    const user = parseToken(token);
 
     User.findById(user.userId, function(err, user){
       if (err) return res.status(422).send({errors: normalizeErrors(err.errors) });
@@ -81,4 +81,12 @@ exports.authMiddleware = function(req, res, next) {
   } else {
     return res.status(422).send({errors: [{title: 'Not Authorized', detail: "You are not authorized"}] });
   }
+}
+
+function parseToken(token) {
+  if (token.includes('Bearer')) {
+    return jwt.decode(token.split(' ')[1], keys.SECRET)
+  }
+
+  return token;
 }

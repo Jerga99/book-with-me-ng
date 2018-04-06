@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginData } from '../user/shared/user.service';
+import { MESSAGES } from '../shared/message-types';
 
 @Component({
   selector: 'bwm-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   public errors: any = [];
 
-  public isRegistered: boolean = false;
+  public notifyMessage: string = "";
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -25,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (params['registered']) {
-        this.isRegistered = params['registered'];
+      if (params['M']) {
+        this.notifyMessage = MESSAGES[params['M']];
       }
     });
   }
