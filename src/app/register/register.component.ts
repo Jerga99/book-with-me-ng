@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'bwm-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-  providers: [UserService]
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   public user: User;
