@@ -4,6 +4,7 @@ import { HelperService } from '../shared/service/helper.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { CamelizePipe } from 'ngx-pipes';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../user/shared/user.service';
 
 @NgModule({
   exports: [
@@ -11,6 +12,6 @@ import { FormsModule } from '@angular/forms';
     NgPipesModule,
     FormsModule
   ],
-  providers: [HelperService, CamelizePipe]
+  providers: [HelperService, CamelizePipe, UserService]
 })
 export class SharedModule {}
