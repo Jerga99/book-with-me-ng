@@ -31,6 +31,7 @@
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "jwt-simple": "^0.5.1",
     "moment": "^2.19.1",
     "ng2-daterangepicker": "^2.0.12",
     "ngx-pipes": "^2.1.2",
