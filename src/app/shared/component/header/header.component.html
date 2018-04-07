@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">BookWithMe</a>
   <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2 bwm-search" type="search" placeholder="Try 'New York'" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 btn-bwm-search" type="submit">Search</button>
+      <input #citySearch (keyup.enter)="search(citySearch.value)" class="form-control mr-sm-2 bwm-search" type="search" placeholder="Try 'New York'" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 btn-bwm-search"  (click)="search(citySearch.value)" type="button">Search</button>
     </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

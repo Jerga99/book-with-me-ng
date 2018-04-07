@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RentalService } from '../shared/rental.service';
-import { HelperService } from '../../shared/service/helper.service';
 
 import { Rental } from '../shared/rental.model';
 
@@ -12,8 +11,7 @@ import { Rental } from '../shared/rental.model';
 export class RentalListComponent implements OnInit {
   public rentals: Rental[];
 
-  constructor(public rentalService: RentalService,
-              public helper: HelperService) {}
+  constructor(public rentalService: RentalService) {}
 
   ngOnInit() {
     this.rentalService.getRentals().subscribe((rentals: Rental[]) => {
