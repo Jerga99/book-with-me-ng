@@ -7,6 +7,7 @@ const express       = require("express"),
       fakeDB        = require("./seed-db");
 
 const rentalsRoutes = require("./routes/rentals"),
+      bookingRoutes = require("./routes/bookings"),
       authRoutes    = require("./routes/auth");
 
 const url = `mongodb://${keys.DB_USER}:${keys.DB_PASSWORD}@ds163034.mlab.com:63034/bwm-dev`;
@@ -19,6 +20,7 @@ mongoose.connect(url).then(() => {
 app.use(bodyParser.json()); // use od body parser to get values from get req
 
 app.use("/api/v1/rentals", rentalsRoutes);
+app.use("/api/v1/bookings", bookingRoutes);
 app.use("/api/v1", authRoutes);
 
 const PORT = process.env.PORT || '3000';
