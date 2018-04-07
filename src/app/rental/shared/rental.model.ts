@@ -1,3 +1,6 @@
+import { Booking } from '../../booking/shared/booking.model';
+import { User } from '../../user/shared/user.model';
+
 export interface Rental {
   _id: string;
   title: string;
@@ -9,4 +12,6 @@ export interface Rental {
   description: string;
   dailyRate: number;
   createdAt: string;
+  bookings: Booking[];
+  user: User;
 }
