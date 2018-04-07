@@ -32,7 +32,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jwt-simple": "^0.5.1",
-    "moment": "^2.19.1",
+    "moment": "^2.22.0",
     "ng2-daterangepicker": "^2.0.12",
     "ngx-pipes": "^2.1.2",
     "rxjs": "^5.5.6",
