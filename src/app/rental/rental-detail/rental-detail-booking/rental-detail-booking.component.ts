@@ -1,5 +1,8 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
 import { Rental } from '../../shared/rental.model';
+import { Booking } from '../../../booking/shared/booking.model';
+import { HelperService } from '../../../shared/service/helper.service';
+import * as moment from 'moment';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -7,18 +10,45 @@ import { Rental } from '../../shared/rental.model';
   templateUrl: './rental-detail-booking.component.html',
   styleUrls: ['rental-detail-booking.component.scss']
 })
-export class RentalDetailBookingComponent {
+export class RentalDetailBookingComponent implements OnInit {
   @Input() public rental: Rental;
 
   public daterange: any = {};
+  public takenDates: any = [];
 
-  // see original project for full list of options
-  // can also be setup using the config service to apply to multiple pickers
   public options: any = {
-      locale: { format: 'YYYY-MM-DD' },
+      locale: { format: 'Y-MM-DD' },
       alwaysShowCalendars: false,
-      opens: 'left'
+      opens: 'left',
+      isInvalidDate: this.checkForInvalidDates.bind(this)
   };
+
+  constructor(private helper: HelperService) {}
+
+  private computeTakenDates() {
+    const bookings: Booking[] = this.rental.bookings;
+
+    if (bookings && bookings.length) {
+      bookings.forEach(booking => {
+        const range = this.helper.getRangeOfDates(booking.startAt, booking.endAt);
+        range.forEach(date => {
+
+        this.takenDates.push(date)
+      });
+        this.takenDates.push(moment(booking.startAt).format('Y-MM-DD'));
+        this.takenDates.push(moment(booking.startAt).format('Y-MM-DD'));
+      });
+    }
+    this.takenDates;
+  }
+
+  private checkForInvalidDates(date) {
+    return this.takenDates.includes(date.format('Y-MM-DD')) || date.diff(moment(), 'days', true) <= 0;
+  }
+
+  public ngOnInit() {
+    this.computeTakenDates();
+  }
 
   public selectedDate(value: any, datepicker?: any) {
       // this is the date the iser selected
