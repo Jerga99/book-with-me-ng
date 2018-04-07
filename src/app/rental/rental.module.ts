@@ -7,6 +7,8 @@ import { Daterangepicker } from 'ng2-daterangepicker';
 
 import { RentalComponent } from './rental.component';
 import { RentalListComponent } from './rental-list/rental-list.component';
+import { RentalListDetailComponent } from './rental-list-detail/rental-list-detail.component';
+import { RentalSearchComponent } from './rental-search/rental-search.component';
 import { RentalDetailComponent } from './rental-detail/rental-detail.component';
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
 
@@ -18,7 +20,8 @@ const routes: Routes = [
     component: RentalComponent,
     children: [
       { path: '', component: RentalListComponent },
-      { path: ':rentalId', component: RentalDetailComponent }
+      { path: ':rentalId', component: RentalDetailComponent },
+      { path: ':city/homes', component: RentalSearchComponent }
     ]
   }
 ];
@@ -34,8 +37,10 @@ const routes: Routes = [
   declarations: [
     RentalComponent,
     RentalListComponent,
+    RentalListDetailComponent,
     RentalDetailComponent,
-    RentalDetailBookingComponent
+    RentalDetailBookingComponent,
+    RentalSearchComponent
   ],
   providers: [RentalService]
 })

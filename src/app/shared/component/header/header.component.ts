@@ -17,4 +17,8 @@ export class HeaderComponent {
         this.router.navigate(['login']);
       })
   }
+
+  public search(city: string): void {
+    city ? this.router.navigate([`rentals/${city}/homes`]) : this.router.navigate(['rentals'])
+  }
 }

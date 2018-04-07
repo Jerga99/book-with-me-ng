@@ -16,7 +16,7 @@
         <div class="rental">
           <h2 class="rental-type {{rental.category}}">{{helper.rentalType(rental.shared)}} {{rental.category}}</h2>
           <h1 class="rental-title">{{rental.title}}</h1>
-          <h2 class="rental-city">{{rental.city}}</h2>
+          <h2 class="rental-city">{{rental.city | ucwords}}</h2>
           <div class="rental-room-info">
             <span><i class="fa fa-building"></i>{{rental.bedrooms}} bedrooms</span>
             <span><i class="fa fa-user"></i> {{rental.bedrooms + 4}} guests</span>
