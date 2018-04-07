@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const rentalShema = new Schema({
     title: String,
-    city: String,
+    city: {type: String, lowercase: true},
     street: String,
-    category: String,
+    category: {type: String, lowercase: true},
     image: String,
     bedrooms: Number,
     description: String,
