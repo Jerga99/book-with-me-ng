@@ -39,7 +39,4 @@ export class LoginComponent implements OnInit {
       this.errors = invalidResponse.error.errors;
     })
   }
-
-
-
 }

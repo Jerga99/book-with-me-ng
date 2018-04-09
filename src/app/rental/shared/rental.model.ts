@@ -1,7 +1,9 @@
 import { Booking } from '../../booking/shared/booking.model';
 import { User } from '../../user/shared/user.model';
 
-export interface Rental {
+export class Rental {
+  public static readonly CATEGORIES = ['apartment', 'house', 'condo']
+
   _id: string;
   title: string;
   city: string;

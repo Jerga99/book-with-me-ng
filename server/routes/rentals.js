@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Rental = require("../models/rental");
+const User = require("../models/user");
 const Auth = require("../controllers/auth");
-
+const {normalizeErrors} = require("../helpers/mongoose-helper");
 
 // TEST WITH AUTH MIDDLEWARE
 router.get("/", function(req, res) {
@@ -23,18 +24,18 @@ router.get("/", function(req, res) {
   }
 });
 
-router.post("/", Auth.authMiddleware, function(req, res) {
-  const { title, street, category, image, bedrooms, description, dailyRate } = req.body;
+router.post("", Auth.authMiddleware, function(req, res) {
+  const { title, city, street, category, image, bedrooms, description, dailyRate } = req.body;
 
-  const rental = new Rental({title, street, category, image, bedrooms, description, dailyRate});
-  rental.user = res.locals.user;
+  const rental = new Rental({title, city, street, category, image, bedrooms, description, dailyRate});
+  const user = res.locals.user;
+  rental.user = user;
 
   Rental.create(rental, function(err, newRental) {
     if (err) {
       return res.status(422).send({errors: normalizeErrors(err.errors) });
     } else {
-      user.rentals.push(newRental);
-      user.save();
+      User.update({_id: user.id}, { $push: {rentals: newRental}}, function(){});
       res.status(200).send({});
     }
   });
