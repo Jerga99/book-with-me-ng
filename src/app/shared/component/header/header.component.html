@@ -9,6 +9,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Owner Section
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/rentals/new">Create Rental</a>
+          <a class="dropdown-item" routerLink="/manage/rentals">Manage Rentals</a>
+        </div>
+      </div>
       <ng-container *ngIf="auth.isAuthenticated()">
         <a class="nav-item nav-link"> Welcome {{auth.getUsername()}}</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
@@ -17,7 +26,6 @@
         <a class="nav-item nav-link active" routerLink="login">Login <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" routerLink="register">Register</a>
       </ng-container>
-
     </div>
   </div>
 </nav>

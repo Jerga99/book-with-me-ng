@@ -23,6 +23,9 @@
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
       ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
