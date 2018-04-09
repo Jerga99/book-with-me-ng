@@ -21,8 +21,12 @@ exports.createBooking = function(req, res, next) {
       booking.user = user;
       booking.rental = foundRental;
       foundRental.bookings.push(booking);
+      user.bookings.push(booking);
+
+      user.save()
       booking.save();
       foundRental.save();
+
       return res.json({startAt: booking.startAt, endAt: booking.endAt});
     } else {
       return res.status(422).send({errors: [{title: 'Invalid Booking', detail: "Choosen dates are already taken"}] });
