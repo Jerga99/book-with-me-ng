@@ -15,6 +15,8 @@ import { RentalDetailBookingComponent } from './rental-detail/rental-detail-book
 import { RentalService } from './shared/rental.service';
 import { BookingService } from '../booking/shared/booking.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -31,9 +33,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+    ToastModule.forRoot(),
     SharedModule,
     MapModule,
-    Daterangepicker
+    Daterangepicker,
+    BrowserAnimationsModule
   ],
   exports: [],
   declarations: [

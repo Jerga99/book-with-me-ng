@@ -31,6 +31,11 @@
     <p>Price: <em>{{newBooking.totalPrice}}$ </em></p>
     <p>Do you confirm your booking for selected days?</p>
   </div>
+  <div *ngIf="errors.length > 0" class="alert alert-danger modal-error">
+    <p *ngFor="let error of errors">
+      {{error.detail}}
+    </p>
+  </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-bwm" (click)="confirmBooking(bookingModal)">Confirm</button>
     <button #closeBtn type="button" class="btn btn-bwm" (click)="c('Close click')">Cancel</button>

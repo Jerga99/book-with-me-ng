@@ -72,7 +72,10 @@ import 'core-js/es7/reflect';
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
+declare var System;
+System.registerDynamic = function(){};
 
+import '../node_modules/ng2-toastr/bundles/ng2-toastr.min.js';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

@@ -1,10 +1,12 @@
-import { Component, ViewEncapsulation, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Rental } from '../../shared/rental.model';
 import { Booking } from '../../../booking/shared/booking.model';
 import { HelperService } from '../../../shared/service/helper.service';
 import { BookingService } from '../../../booking/shared/booking.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 import * as moment from 'moment';
 
 @Component({
@@ -22,6 +24,7 @@ export class RentalDetailBookingComponent implements OnInit {
   public takenDates: any = [];
   public newBooking: Booking;
   public modalRef: any;
+  public errors: any[];
 
   public options: any = {
       locale: { format: 'Y-MM-DD' },
@@ -33,7 +36,11 @@ export class RentalDetailBookingComponent implements OnInit {
 
   constructor(private helper: HelperService,
               private modalService: NgbModal,
-              private bookingService: BookingService) {}
+              private bookingService: BookingService,
+              private toastr: ToastsManager,
+              private vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   private computeTakenDates() {
     const bookings: Booking[] = this.rental.bookings;
@@ -63,7 +70,6 @@ export class RentalDetailBookingComponent implements OnInit {
   private computeBookingValues() {
     this.newBooking.days = this.helper.getRangeOfDates(this.newBooking.startAt, this.newBooking.endAt).length;
     this.newBooking.totalPrice = this.newBooking.days * this.rental.dailyRate;
-    this.newBooking.rental = this.rental;
   }
 
   private resetDatepicker() {
@@ -85,17 +91,21 @@ export class RentalDetailBookingComponent implements OnInit {
   }
 
   public confirmBooking(bookingModal) {
+    this.newBooking.rental = this.rental;
+
     this.bookingService.makeBooking(this.newBooking).subscribe(data => {
       this.newBooking = new Booking();
       this.fillTakenDates(data.startAt, data.endAt);
       this.resetDatepicker();
+      this.toastr.success('Booking succesfully created, you can check your booking details in manage section', 'Success!');
       this.modalRef.close();
-    }, (errorsResponse) => {
-
+    }, (errorsResponse: HttpErrorResponse) => {
+      this.errors = errorsResponse.error.errors;
     });
   }
 
   public openModal(content) {
+    this.errors = [];
     this.modalRef = this.modalService.open(content);
   }
 
