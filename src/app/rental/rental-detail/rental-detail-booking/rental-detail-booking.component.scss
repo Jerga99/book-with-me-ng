@@ -72,10 +72,10 @@ $daterangepicker-cell-hover-bg-color:        #eee !default;
 
 $daterangepicker-in-range-color:             #000 !default;
 $daterangepicker-in-range-border-color:      transparent !default;
-$daterangepicker-in-range-bg-color:          #ebf4f8 !default;
+$daterangepicker-in-range-bg-color:          #fc8a82 !important;
 
 $daterangepicker-active-color:               #fff !default;
-$daterangepicker-active-bg-color:            #357ebd !default;
+$daterangepicker-active-bg-color:            $main-color !important;
 $daterangepicker-active-border-color:        transparent !default;
 
 $daterangepicker-unselected-color:           #999 !default;
@@ -649,3 +649,25 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
     }
   }
 }
+
+// MODAL
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.buttons {
+  margin: 15px 0px;
+}
+
+em {
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+

@@ -13,6 +13,8 @@ import { RentalDetailComponent } from './rental-detail/rental-detail.component';
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
 
 import { RentalService } from './shared/rental.service';
+import { BookingService } from '../booking/shared/booking.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -42,6 +44,6 @@ const routes: Routes = [
     RentalDetailBookingComponent,
     RentalSearchComponent
   ],
-  providers: [RentalService]
+  providers: [RentalService, BookingService]
 })
 export class RentalModule {}
