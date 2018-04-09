@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ManageRentalsComponent } from './manage-rentals/manage-rentals.component';
 import { ManageComponent } from './manage.component';
+import { ManageRentalsBookingComponent } from './manage-rentals/manage-rentals-booking/manage-rentals-booking.component';
 
 import { RentalService } from '../rental/shared/rental.service';
 import { BookingService } from '../booking/shared/booking.service';
@@ -27,7 +28,8 @@ const routes: Routes = [
   exports: [],
   declarations: [
     ManageComponent,
-    ManageRentalsComponent
+    ManageRentalsComponent,
+    ManageRentalsBookingComponent
   ],
   providers: [RentalService, BookingService]
 })

@@ -1,1 +1,29 @@
-<h1>Halo</h1>
+<section id="userRentals">
+  <h1 class="page-title">My Rentals</h1>
+  <div class="row">
+
+    <div *ngFor="let rental of rentals" class="col-md-4">
+      <div class="card text-center">
+        <div class="card-block">
+          <h4 class="card-title">{{rental.title}} - {{rental.city | ucwords}}</h4>
+          <a class="btn btn-bwm" routerLink="/rentals/{{rental._id}}">Go to Rental</a>
+          <span *ngIf="rental.bookings.length > 0">
+            <bwm-manage-rentals-booking [bookings]="rental.bookings"></bwm-manage-rentals-booking>
+          </span>
+        </div>
+        <div class="card-footer text-muted">
+          Created at {{rental.createdAt}}
+        </div>
+      </div>
+    </div>
+
+      <!-- <div class="col-md-8">
+        <div class="alert alert-warning">
+          You dont have any rentals currenty created. If you want advertised your property
+          please follow this link.
+          {{#link-to "rentals.new" class="btn btn-bwm"}} Register Rental {{/link-to}}
+        </div>
+      </div> -->
+
+  </div>
+</section>
