@@ -13,7 +13,7 @@ const rentalsRoutes = require("./routes/rentals"),
 const url = `mongodb://${keys.DB_USER}:${keys.DB_PASSWORD}@ds163034.mlab.com:63034/bwm-dev`;
 mongoose.connect(url).then(() => {
   // populate DB
-  // fakeDB.seed();
+  fakeDB.seed();
 });
 
 

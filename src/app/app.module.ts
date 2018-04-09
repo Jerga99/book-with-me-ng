@@ -6,6 +6,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { SharedModule } from './shared/shared.module';
 import { RentalModule } from './rental/rental.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/component/header/header.component';
@@ -38,7 +39,8 @@ import { TokenInterceptor } from './shared/interceptor/token.interceptor';
     RentalModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    SharedModule
+    SharedModule,
+    NgbModule.forRoot()
   ],
   providers: [
   AuthGuard,

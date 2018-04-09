@@ -6,12 +6,36 @@
      />
   <div class="form-group">
     <label for="guests">Guests</label>
-    <input type="number" class="form-control" id="guests" aria-describedby="emailHelp" placeholder="">
+    <input [(ngModel)]="newBooking.guests" type="number" class="form-control" id="guests" aria-describedby="emailHelp" placeholder="">
   </div>
-  <button class="btn btn-danger btn-confirm btn-block">Reserve place now</button>
+  <button [disabled]="!newBooking.startAt || !newBooking.endAt || !newBooking.guests" class="btn btn-bwm btn-confirm btn-block" (click)="openModal(bookingModal)">Reserve place now</button>
   <hr>
   <p class="booking-note-title">People are interested into this house</p>
   <p class="booking-note-text">
     More than 500 people checked this rental in last month.
   </p>
 </div>
+
+<!-- MODAL -->
+<ng-template #bookingModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title title">Confirm Booking <p>{{newBooking.startAt}} / {{newBooking.endAt}}</p></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <em>{{newBooking.days}}</em> nights /
+    <em>{{rental.dailyRate}}$</em> per Night
+    <p>Guests: <em>{{newBooking.guests}}</em></p>
+    <p>Price: <em>{{newBooking.totalPrice}}$ </em></p>
+    <p>Do you confirm your booking for selected days?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-bwm" (click)="confirmBooking(bookingModal)">Confirm</button>
+    <button #closeBtn type="button" class="btn btn-bwm" (click)="c('Close click')">Cancel</button>
+  </div>
+</ng-template>
+
+
+

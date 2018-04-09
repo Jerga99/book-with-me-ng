@@ -4,11 +4,11 @@ const {normalizeErrors} = require("../helpers/mongoose-helper");
 const moment = require('moment');
 
 exports.createBooking = function(req, res, next) {
-  const { startAt, endAt, totalPrice, days, guests, rentalId } = req.body;
+  const { startAt, endAt, totalPrice, days, guests, rentalId, rental } = req.body;
   const user = res.locals.user;
   const booking = new Booking({startAt, endAt, totalPrice, days, guests});
 
-  Rental.findById(rentalId).populate('bookings').populate('user').exec(function(err, foundRental) {
+  Rental.findById(rental._id).populate('bookings').populate('user').exec(function(err, foundRental) {
     if (err) {
       return res.status(422).send({errors: normalizeErrors(err.errors) });
     }
@@ -21,11 +21,8 @@ exports.createBooking = function(req, res, next) {
       booking.user = user;
       booking.rental = foundRental;
       foundRental.bookings.push(booking);
-      user.bookings.push(booking);
-      user.save()
       booking.save();
       foundRental.save();
-
       return res.json({startAt: booking.startAt, endAt: booking.endAt});
     } else {
       return res.status(422).send({errors: [{title: 'Invalid Booking', detail: "Choosen dates are already taken"}] });

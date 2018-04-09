@@ -3,8 +3,8 @@ import { User } from '../../user/shared/user.model';
 
 export class Booking {
   _id: string;
-  startAt: Date;
-  endAt: Date;
+  startAt: string;
+  endAt: string;
   totalPrice: number;
   guests: number;
   days: number;
