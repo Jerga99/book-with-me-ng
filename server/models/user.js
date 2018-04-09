@@ -17,11 +17,10 @@ const userSchema = new Schema({
 userSchema.pre("save", function(next){
   const user = this;
 
-  if (!user.password) {
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPsw = bcrypt.hashSync(user.password, salt);
-    user.password = hashedPsw;
-  }
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPsw = bcrypt.hashSync(user.password, salt);
+  user.password = hashedPsw;
+
   next();
 });
 

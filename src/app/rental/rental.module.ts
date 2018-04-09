@@ -11,12 +11,15 @@ import { RentalListDetailComponent } from './rental-list-detail/rental-list-deta
 import { RentalSearchComponent } from './rental-search/rental-search.component';
 import { RentalDetailComponent } from './rental-detail/rental-detail.component';
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
+import { RentalCreateComponent } from './rental-create/rental-create.component';
 
 import { RentalService } from './shared/rental.service';
 import { BookingService } from '../booking/shared/booking.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AuthGuard } from '../shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +27,7 @@ const routes: Routes = [
     component: RentalComponent,
     children: [
       { path: '', component: RentalListComponent },
+      { path: 'new', component: RentalCreateComponent, canActivate: [AuthGuard] },
       { path: ':rentalId', component: RentalDetailComponent },
       { path: ':city/homes', component: RentalSearchComponent }
     ]
@@ -46,7 +50,8 @@ const routes: Routes = [
     RentalListDetailComponent,
     RentalDetailComponent,
     RentalDetailBookingComponent,
-    RentalSearchComponent
+    RentalSearchComponent,
+    RentalCreateComponent
   ],
   providers: [RentalService, BookingService]
 })

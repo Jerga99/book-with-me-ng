@@ -1,5 +1,6 @@
 const Booking = require("../models/booking");
 const Rental = require("../models/rental");
+const User = require("../models/user");
 const {normalizeErrors} = require("../helpers/mongoose-helper");
 const moment = require('moment');
 
@@ -21,9 +22,8 @@ exports.createBooking = function(req, res, next) {
       booking.user = user;
       booking.rental = foundRental;
       foundRental.bookings.push(booking);
-      user.bookings.push(booking);
 
-      user.save()
+      User.update({_id: user.id}, { $push: {bookings: booking}}, function(){});
       booking.save();
       foundRental.save();
 

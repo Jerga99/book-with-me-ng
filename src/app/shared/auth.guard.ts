@@ -10,20 +10,26 @@ export class AuthGuard implements CanActivate {
               private router: Router) {}
 
   public canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
-    const routeUrl: string = '/' + state.url.split('/')[1];
-
     if (this.auth.isAuthenticated()) {
-      if (routeUrl === '/login' || routeUrl ==='/register') {
+      if (this.isLoginOrRegister(state.url)) {
         this.router.navigate(['/']);
         return false;
       }
 
       return true;
-    } else if (routeUrl === '/login' || routeUrl ==='/register') {
-        return true;
+    } else if (this.isLoginOrRegister(state.url)) {
+      return true;
     }
 
     this.router.navigate(['/login', {M: "NO_AUTH"}]);
+    return false;
+  }
+
+  isLoginOrRegister(url: string): boolean {
+    if (url.includes('login') || url.includes('register')) {
+      return true;
+    }
+
     return false;
   }
 }

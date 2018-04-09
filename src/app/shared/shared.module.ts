@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../user/shared/user.service';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
-
 @NgModule({
   imports: [],
   exports: [
