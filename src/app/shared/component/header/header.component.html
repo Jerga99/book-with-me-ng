@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">BookWithMe</a>
+  <a class="navbar-brand" routerLink="/rentals">BookWithMe<img src="favicon.ico" alt=""></a>
   <form class="form-inline my-2 my-lg-0">
       <input #citySearch (keyup.enter)="search(citySearch.value)" class="form-control mr-sm-2 bwm-search" type="search" placeholder="Try 'New York'" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0 btn-bwm-search"  (click)="search(citySearch.value)" type="button">Search</button>
@@ -21,11 +21,11 @@
       </div>
       <ng-container *ngIf="auth.isAuthenticated()">
         <a class="nav-item nav-link"> Welcome {{auth.getUsername()}}</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link clickable" (click)="logout()">Logout</a>
       </ng-container>
       <ng-container *ngIf="!auth.isAuthenticated()">
-        <a class="nav-item nav-link active" routerLink="login">Login <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" routerLink="register">Register</a>
+        <a class="nav-item nav-link active clickable" routerLink="login">Login <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link clickable" routerLink="register">Register</a>
       </ng-container>
     </div>
   </div>

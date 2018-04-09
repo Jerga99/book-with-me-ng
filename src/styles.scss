@@ -30,6 +30,10 @@ html, body, p {
   }
 }
 
+.clickable:hover {
+    cursor: pointer !important;
+  }
+
 .page-title {
   font-size: 30px;
   font-weight: 700;
