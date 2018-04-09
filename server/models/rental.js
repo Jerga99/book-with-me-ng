@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const rentalShema = new Schema({
-  title: String,
-  city: {type: String, lowercase: true},
-  street: String,
+  title: {type: String, required: true},
+  city: {type: String, lowercase: true, required: true},
+  street: {type: String, required: true},
   category: {type: String, lowercase: true},
-  image: String,
+  image: {type: String, required: true},
   bedrooms: Number,
-  description: String,
+  description: {type: String, required: true},
   dailyRate: Number,
   createdAt: {type: Date, default: Date.now},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
