@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { ManageRentalsComponent } from './manage-rentals/manage-rentals.component';
+import { ManageBookingsComponent } from './manage-bookings/manage-bookings.component';
 import { ManageComponent } from './manage.component';
 import { ManageRentalsBookingComponent } from './manage-rentals/manage-rentals-booking/manage-rentals-booking.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     path: 'manage',
     component: ManageComponent,
     children: [
-      { path: 'rentals', component: ManageRentalsComponent },
+      { path: 'rentals', component: ManageRentalsComponent, canActivate: [AuthGuard] },
+      { path: 'bookings', component: ManageBookingsComponent, canActivate: [AuthGuard] },
     ]
   }
 ];
@@ -29,7 +31,8 @@ const routes: Routes = [
   declarations: [
     ManageComponent,
     ManageRentalsComponent,
-    ManageRentalsBookingComponent
+    ManageRentalsBookingComponent,
+    ManageBookingsComponent
   ],
   providers: [RentalService, BookingService]
 })

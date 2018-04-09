@@ -1,0 +1,28 @@
+<section id="userBookings">
+  <h1 class="page-title">My Bookings</h1>
+  <div class="row">
+    <ng-container *ngIf="bookings && bookings.length > 0">
+      <div *ngFor="let booking of bookings" class="col-md-4">
+        <div class="card text-center">
+          <div class="card-header">
+            {{booking.rental.category}}
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">{{booking.rental.title}} - {{booking.rental.city | ucwords}}</h4>
+            <p class="card-text booking-desc">{{booking.rental.description}}</p>
+            <p class="card-text booking-days">{{booking.startAt | formatDate}} - {{booking.endAt | formatDate}} | {{booking.days}} days</p>
+            <p class="card-text booking-price"><span>Price: </span> <span class="booking-price-value">{{booking.totalPrice}} $</span></p>
+            <a class="btn btn-bwm" routerLink="/rentals/{{booking.rental._id}}">Go te Rental</a>
+          </div>
+          <div class="card-footer text-muted">
+            Created {{booking.createdAt | formatDate}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div *ngIf="bookings && bookings.length == 0" class="alert alert-warning">
+      You have no bookings created go to rentals section and book your place today.
+      <a class="btn btn-bwm" routerLink="/rentals">Available Rentals</a>
+    </div>
+  </div>
+</section>

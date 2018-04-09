@@ -9,13 +9,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <div class="nav-item dropdown">
+      <div *ngIf="auth.isAuthenticated()" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Owner Section
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" routerLink="/rentals/new">Create Rental</a>
           <a class="dropdown-item" routerLink="/manage/rentals">Manage Rentals</a>
+          <a class="dropdown-item" routerLink="/manage/bookings">Manage Bookings</a>
         </div>
       </div>
       <ng-container *ngIf="auth.isAuthenticated()">
