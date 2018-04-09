@@ -34,6 +34,18 @@ exports.createBooking = function(req, res, next) {
   })
 }
 
+exports.getUserBookings = function(req, res, next) {
+  const user = res.locals.user;
+
+  Booking.where({user: user}).populate('rental').exec(function(err, foundBookings){
+    if (err) {
+      return res.status(422).send({errors: normalizeErrors(err.errors) });
+    }
+
+    res.json(foundBookings);
+  });
+}
+
 function isValidBooking(proposedBooking, rental) {
   let isValid = true;
 

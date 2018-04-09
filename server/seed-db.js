@@ -83,12 +83,14 @@ module.exports = (function() {
         const newRental = new Rental(rental);
 
         if (index === 0) {
-          newRental.bookings.push(this.booking1);
-          newRental.bookings.push(this.booking2);
+          this.rental1.user = this.user1;
+          this.rental1.bookings.push(this.booking1);
+          this.rental1.bookings.push(this.booking2);
+          this.rental1.save();
+        } else {
+          newRental.user = this.user1;
+          newRental.save();
         }
-
-        newRental.user = this.user1;
-        newRental.save();
       });
     }
   };
