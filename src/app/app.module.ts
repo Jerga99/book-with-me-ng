@@ -21,6 +21,8 @@ import { AuthGuard } from './shared/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 
+import { DateFormatPipe } from './shared/pipe/date-format.pipe';
+
  const routes: Routes = [
    { path: '', redirectTo: '/rentals', pathMatch: 'full' },
    { path: 'rentals', component: RentalComponent },
