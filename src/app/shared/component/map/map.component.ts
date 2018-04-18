@@ -8,11 +8,11 @@ import { AgmMap } from '@agm/core';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
-  private isPositionFound: boolean = false;
-  private isMapLoaded: boolean = false;
+  public isPositionFound: boolean = false;
+  public isMapLoaded: boolean = false;
 
-  private lat: number = 0;
-  private lng: number = 0;
+  public lat: number = 0;
+  public lng: number = 0;
 
   @Input() location: string;
 
