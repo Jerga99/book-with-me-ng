@@ -10,5 +10,5 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ManageRentalsBookingComponent {
   @Input() public bookings: Booking[];
 
-  constructor(private modalService: NgbModal){}
+  constructor(public modalService: NgbModal){}
 }

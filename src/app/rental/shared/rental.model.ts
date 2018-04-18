@@ -14,6 +14,7 @@ export class Rental {
   description: string;
   dailyRate: number;
   createdAt: string;
+  shared:boolean;
   bookings: Booking[];
   user: User;
 }
