@@ -11,6 +11,21 @@
     padding: 13px;
   }
 
+  .should-login-btn-container {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .btn-login {
+    text-align:center;
+    font-size: 15px;
+
+    &:hover, &:focus {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
   label {
     font-size:12px;
     font-weight: 300;
