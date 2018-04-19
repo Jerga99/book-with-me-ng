@@ -7,6 +7,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserService } from '../../../user/shared/user.service';
 import * as moment from 'moment';
 
 @Component({
@@ -34,11 +35,12 @@ export class RentalDetailBookingComponent implements OnInit {
       autoUpdateInput: false
   };
 
-  constructor(private helper: HelperService,
-              private modalService: NgbModal,
-              private bookingService: BookingService,
-              private toastr: ToastsManager,
-              private vcr: ViewContainerRef) {
+  constructor(public helper: HelperService,
+              public modalService: NgbModal,
+              public bookingService: BookingService,
+              public toastr: ToastsManager,
+              public vcr: ViewContainerRef,
+              public auth: UserService ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 

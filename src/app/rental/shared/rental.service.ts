@@ -16,6 +16,10 @@ export class RentalService {
     return this.http.get(`/api/v1/rentals/${id}`);
   }
 
+  public deleteById(id: string): Observable<any> {
+    return this.http.delete(`/api/v1/rentals/${id}`);
+  }
+
   public searchRentals(city): Observable<any> {
     return this.http.get(`/api/v1/rentals?city=${city}`);
   }

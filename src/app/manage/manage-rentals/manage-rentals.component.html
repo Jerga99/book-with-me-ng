@@ -12,7 +12,8 @@
             </span>
           </div>
           <div class="card-footer text-muted">
-            Created at {{rental.createdAt}}
+             <p>Created at {{rental.createdAt | formatDate}}</p>
+             <button (click)="deleteRental(rental)" type="button" class="btn btn-bwm btn-delete">Delete</button>
           </div>
         </div>
       </div>

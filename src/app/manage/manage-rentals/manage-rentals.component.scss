@@ -15,8 +15,18 @@
     padding: 10px 15px;
   }
 
+  .btn-delete {
+    float: right
+  }
+
   .card-footer {
     font-size: 14px;
+
+    p {
+      display: inline-block;
+      line-height: 40px;
+      margin: 0;
+    }
   }
 
   .btn-bookings {
