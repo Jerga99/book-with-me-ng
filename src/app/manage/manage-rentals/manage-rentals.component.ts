@@ -14,8 +14,8 @@ export class ManageRentalsComponent implements OnInit {
   public errors: any;
 
   constructor(private rentalService: RentalService,
-              public toastr: ToastsManager
-              public vcr: ViewContainerRef,){
+              public toastr: ToastsManager,
+              public vcr: ViewContainerRef){
 
     this.toastr.setRootViewContainerRef(vcr);
   }
