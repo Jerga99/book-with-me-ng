@@ -18,8 +18,11 @@ import { BookingService } from '../booking/shared/booking.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditableModule } from '../shared/component/editable/editable.module';
 
 import { AuthGuard } from '../shared/auth.guard';
+import { RentalDetailUpdateComponent } from './rental-detail/rental-detail-update/rental-detail-update.component';
+import { RentalDetailInfoComponent } from './rental-detail/rental-detail-info/rental-detail-info.component';
 
 const routes: Routes = [
   {
@@ -28,6 +31,7 @@ const routes: Routes = [
     children: [
       { path: '', component: RentalListComponent },
       { path: 'new', component: RentalCreateComponent, canActivate: [AuthGuard] },
+      { path: ':rentalId/edit', component: RentalDetailUpdateComponent },
       { path: ':rentalId', component: RentalDetailComponent },
       { path: ':city/homes', component: RentalSearchComponent }
     ]
@@ -41,7 +45,8 @@ const routes: Routes = [
     SharedModule,
     MapModule,
     Daterangepicker,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EditableModule
   ],
   exports: [],
   declarations: [
@@ -51,7 +56,9 @@ const routes: Routes = [
     RentalDetailComponent,
     RentalDetailBookingComponent,
     RentalSearchComponent,
-    RentalCreateComponent
+    RentalCreateComponent,
+    RentalDetailUpdateComponent,
+    RentalDetailInfoComponent
   ],
   providers: [RentalService, BookingService]
 })

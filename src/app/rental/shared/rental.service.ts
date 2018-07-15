@@ -31,4 +31,8 @@ export class RentalService {
   public getCurrentUserRentals(): Observable<any> {
     return this.http.get('/api/v1/rentals/manage');
   }
+
+  public updateRental(id, rental): Observable<any> {
+    return this.http.patch(`api/v1/rentals/${id}`, rental);
+  }
 }
