@@ -9,19 +9,21 @@ const express       = require("express"),
 
 const rentalsRoutes = require("./routes/rentals"),
       bookingRoutes = require("./routes/bookings"),
-      authRoutes    = require("./routes/auth");
+      authRoutes    = require("./routes/auth"),
+      fileRoutes    = require("./routes/file-upload");
 
 const url = `mongodb://${config.DB_USER}:${config.DB_PASSWORD}@${config.DB_URI}`;
 
 mongoose.connect(url).then(() => {
   if (process.env.NODE_ENV != 'production') {
-    // fakeDB.seed();
+    fakeDB.seed();
   }
 });
 
 app.use(bodyParser.json()); // use od body parser to get values from get req
 
 app.use("/api/v1/", authRoutes);
+app.use("/api/v1/", fileRoutes);
 app.use("/api/v1/rentals", rentalsRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
 
@@ -40,3 +42,4 @@ const PORT = process.env.PORT || '3001';
 app.listen(PORT, function(){
     console.log("Node server started on port " + PORT);
 });
+

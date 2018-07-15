@@ -1,0 +1,18 @@
+<div [ngStyle]="style">
+    <textarea *ngIf="isActiveInput"
+      [(ngModel)]="entity[entityField]"
+      (dblclick)="isActiveInput = true"
+      [value]="entity[entityField]"
+      (keydown.escape)="cancelUpdate()"
+      (keyup.enter)="updateEntity()"
+      rows="6"
+      cols="50"
+      class="{{className}} inline">
+    </textarea>
+  <span class="{{className}} inline" *ngIf="!isActiveInput" >{{entity[entityField]}}</span>
+  <div class="inline">
+    <button *ngIf="!isActiveInput" class="btn btn-sm btn-warning btn-editable" (click)="isActiveInput = !isActiveInput">Edit</button>
+    <button *ngIf="isActiveInput" class="btn btn-sm btn-success btn-editable" (click)="updateEntity()">Save</button>
+    <button *ngIf="isActiveInput" class="btn btn-sm btn-danger btn-editable" (click)="cancelUpdate()">Cancel</button>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { Rental } from '../../rental/shared/rental.model';
 import { RentalService } from '../../rental/shared/rental.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'bwm-manage-rentals',
@@ -15,7 +16,8 @@ export class ManageRentalsComponent implements OnInit {
 
   constructor(private rentalService: RentalService,
               public toastr: ToastsManager,
-              public vcr: ViewContainerRef){
+              public vcr: ViewContainerRef,
+              public router: Router,){
 
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -31,6 +33,10 @@ export class ManageRentalsComponent implements OnInit {
   removeRentalFromView(rentalId: string) {
     const index = this.rentals.findIndex(rental => rental._id == rentalId);
     this.rentals.splice(index, 1);
+  }
+
+  goToUpdate(rentalId): any {
+    this.router.navigate([`/rentals/${rentalId}/edit`]);
   }
 
   deleteRental(rental): any {
