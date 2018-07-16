@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { MapModule } from '../shared/component/map/map.module';
+import { ImageUploadModule } from "../shared/component/image-upload/image-upload.module";
 
 import { Daterangepicker } from 'ng2-daterangepicker';
 
@@ -46,7 +47,8 @@ const routes: Routes = [
     MapModule,
     Daterangepicker,
     BrowserAnimationsModule,
-    EditableModule
+    EditableModule,
+    ImageUploadModule,
   ],
   exports: [],
   declarations: [

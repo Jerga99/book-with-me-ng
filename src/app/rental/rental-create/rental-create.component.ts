@@ -3,6 +3,7 @@ import { Rental } from '../shared/rental.model';
 import { RentalService } from '../shared/rental.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FileHolder } from "angular2-image-upload";
 
 @Component({
   selector: 'bwm-rental-create-component',
@@ -31,5 +32,18 @@ export class RentalCreateComponent implements OnInit {
       }, (errorsResponse: HttpErrorResponse) => {
         this.errors = errorsResponse.error.errors;
       });
+  }
+
+  onUploadFinished(file: FileHolder, sadad) {
+    debugger;
+    console.log(file);
+  }
+
+  onRemoved(file: FileHolder) {
+    console.log(file);
+  }
+
+  onUploadStateChanged(state: boolean) {
+    console.log(state);
   }
 }
