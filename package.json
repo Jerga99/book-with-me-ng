@@ -26,6 +26,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^1.1.1",
     "angular-font-awesome": "^3.1.2",
+    "angular2-image-upload": "^1.0.0-rc.1",
     "angular2-jsonapi": "^4.1.0",
     "aws-sdk": "^2.275.1",
     "bcrypt": "^1.0.3",
